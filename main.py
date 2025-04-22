@@ -45,6 +45,7 @@ knight_image = pygame.image.load('assets/images/rycerz.png') #obrazek rycerza wr
 bocian_image = pygame.image.load('assets/images/bocian.png') #obrazek bociana wroga
 space_background_image = pygame.image.load('assets/images/tło1.png') #obrazek kosmiczne tło
 background_image = pygame.image.load('assets/images/podstawowe_tlo.png') #obrazek podstawowe tło
+gray_background_image = pygame.image.load('assets/images/podstawowe_tlo_stare.webp') #obrazek podstawowe tło
 
 #skalowanie obrazków
 scaled_pipu_image = pygame.transform.scale(pip_u_image, (100, 400))
@@ -54,6 +55,7 @@ scaled_duck_image = pygame.transform.scale(duck_image, (64, 64)) #kaczka
 scaled_knight_image = pygame.transform.scale(knight_image, (64, 64)) #rycerz wróg
 scaled_bocian_image = pygame.transform.scale(bocian_image, (90, 64)) #bocian wróg
 scaled_background_image = pygame.transform.scale(background_image, (400, 600)) #tło
+scaled_gray_background_image = pygame.transform.scale(gray_background_image, (400, 600)) #tło
 
 #kolory
 WHITE = (255, 255, 255) #kolor biały
@@ -111,7 +113,7 @@ while run:
             game_over = True
 
     # Rysowanie tła, kaczki i inne
-    window.blit(scaled_background_image, (0, 0)) #wklejenie tła na okno
+    window.blit(scaled_gray_background_image, (0, 0)) #wklejenie tła na okno
     # Obracanie kaczki w zależności od prędkości
     rotation_angle = -duck_velocity_y * 5  # negatywny mnożnik, żeby przy unoszeniu obracała się do góry
     rotation_angle = max(-30, min(60, rotation_angle))  # ograniczenie kąta między -30 a 60 stopni
