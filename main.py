@@ -4,6 +4,7 @@ import random #random
 
 #wywołanie pygame
 pygame.init()
+pygame.mixer.init()
 
 #zmienne do uruchomienia
 FPS = 60 #FPS gry
@@ -36,6 +37,11 @@ pip2_x = 400
 pip2_y = 500
 pip_gap = 450
 
+#ładowanie dźwięki
+quack_sound = pygame.mixer('assets/sounds/quack_mousic.mp3')
+lobby_sound = pygame.mixer('assets/sounds/lobby_mousic.mp3')
+lobby_castle_sound = pygame.mixer('assets/sounds/lobby_castle_mousic.mp3')
+
 #ładowanie obrazków
 pip_u_image = pygame.image.load('assets/images/rurson_g.png') #obrazek dolnej rury
 pip_d_image = pygame.image.load('assets/images/rurson_d.png')#obrazek górnej rury
@@ -45,7 +51,7 @@ knight_image = pygame.image.load('assets/images/rycerz.png') #obrazek rycerza wr
 bocian_image = pygame.image.load('assets/images/bocian.png') #obrazek bociana wroga
 space_background_image = pygame.image.load('assets/images/tło1.png') #obrazek kosmiczne tło
 background_image = pygame.image.load('assets/images/podstawowe_tlo.png') #obrazek podstawowe tło
-gray_background_image = pygame.image.load('assets/images/podstawowe_tlo_stare.webp') #obrazek podstawowe tło
+gray_background_image = pygame.image.load('assets/images/podstawowe_tlo_stare.png') #obrazek podstawowe tło
 
 #skalowanie obrazków
 scaled_pipu_image = pygame.transform.scale(pip_u_image, (100, 400))
@@ -62,7 +68,7 @@ WHITE = (255, 255, 255) #kolor biały
 RED = (255, 0, 0) #kolor czerwony
 
 #czcionki
-czcionka = pygame.font.Font('assets/font/wendy.ttf', 70) #robienie czcionki
+czcionka = pygame.font.Font('font/wendy.ttf', 70) #robienie czcionki
 game_over_teskt = czcionka.render("PRZEGRALES!", True, RED) 
 points_tekst = czcionka.render(f"Punkty: {point}", True, RED)
 
@@ -87,6 +93,8 @@ while run:
         keys = pygame.key.get_pressed() #zmienna czy przycisk został naciśnięty
         if keys[pygame.K_SPACE]: #sprawdzanie czy spacja została wciśnięta
             duck_velocity_y = -duck_speed 
+            quack_sound.play()
+            
         if keys[pygame.K_ESCAPE]:
             pauze = True
 
